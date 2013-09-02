@@ -108,28 +108,20 @@ giftsAppsModule.service('Questions',function(){
         {"index": 102, "question": "Decide when to implement projects or ministries.", "gift": "ADM", "score": null}
     ]};
     var result =[];
-    this.getQuestions = function (firstquestion, lastquestion) {
-        var low = parseInt(firstquestion) || 0;
-        var high = parseInt(lastquestion) || 0;
+    this.getQuestions = function (first, number) {
         var test = 0;
-        if(high<low){
-            if(high==0){
-                high=low;
-            } else {
-                test=high;
-                high=low;
-                low=test;
-            }
-        }
-        if(low > 0){
-            for (var i = 0, len = questions.questions.length; i < len; i++) {
-                test = parseInt(questions.questions[i].index);
-                if (test >= low && test <= high){
-                    result.push(questions.questions[i]);
-                }
+        for (var i = 0, len = questions.questions.length; i < len; i++) {
+            test = parseInt(questions.questions[i].index);
+            if (test >= first){
+                result.push(questions.questions[i]);
+                number--;
+                if(number==0) break;
             }
         }
         return result;
     };
+    this.updateQuestion = function(question,value){
+
+    }
 });
 

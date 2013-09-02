@@ -1,10 +1,5 @@
-<h1>Question Here</h1>
-<ul class="dropdown-menu">
-    <li ng-repeat="thing in awesomeThings">
-        <a>{{thing}}</a>
-    </li>
-</ul>
+<h3>Honestly evaluate the statement based on your interest</h3>
 <div ng-repeat="question in questionlist">
-    <p>{{question.index}}. {{question.question}}</p>
-    <question-choice></question-choice>
+<question></question>
 </div>
+<previous-next></previous-next>
