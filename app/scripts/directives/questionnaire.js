@@ -2,28 +2,40 @@ giftsAppsModule.directive('questionChoice',function(){
     return {
         restrict: 'E',
         replace: true,
+        scope: {
+            ngModel: '='
+        },
         template :'<div class="btn-group btn-group-vertical">' +
-            '<button class="btn btn-block" ng-click="updateQuestion(5)">Love It</button>' +
-            '<button class="btn btn-block" ng-click="updateQuestion(3)">Enjoy It</button>'+
-            '<button class="btn btn-block" ng-click="updateQuestion(2)">Maybe</button>' +
-            '<button class="btn btn-block" ng-click="updateQuestion(1)">Probably not</button>'+
-            '<button class="btn btn-block" ng-click="updateQuestion(0)">No way!</button></div>'
+            '<button class="btn btn-block" ng-class="{\'btn-success\':ngModel.score == 5}" ng-click="updateQuestion(ngModel,5)">Love It</button>' +
+            '<button class="btn btn-block" ng-class="{\'btn-success\':ngModel.score == 3}" ng-click="updateQuestion(ngModel,3)">Enjoy It</button>'+
+            '<button class="btn btn-block" ng-class="{\'btn-success\':ngModel.score == 2}" ng-click="updateQuestion(ngModel,2)">Maybe</button>' +
+            '<button class="btn btn-block" ng-class="{\'btn-success\':ngModel.score == 1}" ng-click="updateQuestion(ngModel,1)">Probably not</button>'+
+            '<button class="btn btn-block" ng-class="{\'btn-success\':ngModel.score == 0}" ng-click="updateQuestion(ngModel,0)">No way!</button></div>',
+        link: function (scope, element, attrs) {
+            scope.updateQuestion = function (question, v) {
+                question.score = v;
+            }
+        }
     }
-})
+});
 
 giftsAppsModule.directive('question',function(){
     return {
         restrict: 'E',
         replace: true,
-        template :'<div class="row-fluid"><div class="span6"><p>{{question.index}}. {{question.question}}</p></div><div class="span6"><question-choice></question-choice></container></div>'
+        template :'<div class="row-fluid"><div class="span6">' +
+            '<p>{{activeQuestion.question}} {{ activeQuestion.score }}</p>' +
+            '<p class="question">You\'re on question {{ currentQuestion }} of {{questionlist.length}}</p>' +
+            '</div>' +
+            '<div class="span6"><question-choice ng-model="activeQuestion"></question-choice></div>'
     }
-})
-giftsAppsModule.directive('previousNext',function(){
+});
+giftsAppsModule.directive('previousNext', function () {
     return {
         restrict: 'E',
         replace: true,
-        template :'<div class="btn-group"><button class="btn" ng-click="previousQuestion()">Previous</button>' +
-            '<button class="btn" ng-click="nextQuestion()">Next</button></div>'
+        template: '<div class="btn-group"><button class="btn" ng-click="previousQuestion()">Previous</button>' +
+            '<button class="btn" ng-click="nextQuestion()" ng-disabled="cannotProceed()">Next</button></div>'
 
     }
-})
+});

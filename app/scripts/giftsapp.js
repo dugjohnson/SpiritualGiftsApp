@@ -6,11 +6,7 @@ giftsAppsModule.config(function ($routeProvider) {
         .when('/', {
             templateUrl: 'views/frontpage.html'
         })
-        .when('/questions/:start/:finish',{
-            templateUrl:"views/questions.html",
-            controller: "GiftsController"
-        })
-        .when('/questions/:start',{
+        .when('/questions',{
             templateUrl:"views/questions.html",
             controller: "GiftsController"
         })
