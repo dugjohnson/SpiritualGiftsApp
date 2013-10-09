@@ -1,4 +1,7 @@
 <div>
     <p>This is the results page</p>
-    {{categories}}
+    <div ng-repeat="category in categories">
+    <p>categories {{category.description}} {{category.score}}</p>
+    </div>
+    <button class="btn" ng-click="lastQuestion()" ng-disabled="cannotProceed()">Last</button>
 </div>

@@ -14,7 +14,8 @@ giftsAppsModule.config(function ($routeProvider) {
             templateUrl:"views/finished.html"
         })
         .when('/results',{
-            templateUrl:"views/results.html"
+            templateUrl:"views/results.html",
+            controller: "GiftsController"
         })
         .otherwise({
             redirectTo: '/'

@@ -7,20 +7,23 @@ function tallyCategories(questions){
     return categories;
 }
 
-giftsAppsModule.controller('GiftsController', function ($scope,$location, $routeParams, Questions) {
+giftsAppsModule.controller('GiftsController', function ($scope, $location, $routeParams, Questions) {
     $scope.currentQuestion = 1;
+    $scope.questionlist =  Questions.questions;
+    //$scope.categories = tallyCategories($scope.questionlist);
+    $scope.categories = Questions.categories;
     $scope.nextQuestion = function(){
         $scope.currentQuestion++;
     };
     $scope.previousQuestion = function(){
         $scope.currentQuestion--;
     };
-    $scope.questionlist =  Questions.questions;
+    $scope.lastQuestion = function(){
+        $scope.currentQuestion = $scope.questionlist.length;
+    };
     $scope.cannotProceed = function(){
         return  $scope.activeQuestion.score === null;
     };
-    //$scope.categories = tallyCategories($scope.questionlist);
-    $scope.categories = ['hola','hello','bonjour','ciao'];
     $scope.$watch('currentQuestion',function(newVal, oldVal){
         var questionindex = newVal -1;
         if(questionindex<0){$location.path('/');return;}
