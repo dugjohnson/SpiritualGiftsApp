@@ -1,7 +1,7 @@
 var giftsAppsModule = angular.module('giftsSurveyApp', ['ui.bootstrap']);
 
 
-giftsAppsModule.config(function ($routeProvider) {
+giftsAppsModule.config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'views/frontpage.html'
@@ -20,5 +20,6 @@ giftsAppsModule.config(function ($routeProvider) {
         .otherwise({
             redirectTo: '/'
         });
+    $locationProvider.html5Mode(true);
 });
 

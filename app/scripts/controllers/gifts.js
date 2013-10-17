@@ -24,6 +24,15 @@ giftsAppsModule.controller('GiftsController', function ($scope, $location, $rout
     $scope.cannotProceed = function(){
         return  $scope.activeQuestion.score === null;
     };
+    $scope.calculateResults = function(){
+        var lookup = {};
+        for (var i = 0, len = $scope.categories.length; i < len; i++) {
+            lookup[$scope.categories[i].category] = $scope.categories[i];
+        }
+        angular.forEach($scope.questionlist, function(question) {
+            lookup[question.category].score = lookup[question.category].score + question.score;
+        });
+    }
     $scope.$watch('currentQuestion',function(newVal, oldVal){
         var questionindex = newVal -1;
         if(questionindex<0){$location.path('/');return;}
