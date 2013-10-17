@@ -1,4 +1,4 @@
-giftsAppsModule.directive('questionChoice',function(){
+giftsAppsModule.directive('questionChoice',function($timeout){
     return {
         restrict: 'E',
         replace: true,
@@ -13,7 +13,11 @@ giftsAppsModule.directive('questionChoice',function(){
             '<button class="btn btn-block" ng-class="{\'btn-success\':ngModel.score == 0}" ng-click="updateQuestion(ngModel,0)">No way!</button></div>',
         link: function (scope, element, attrs) {
             scope.updateQuestion = function (question, v) {
+                var moveit = function(){
+                    var upscope = element.parent().parent().scope();
+                    upscope.nextQuestion();}
                 question.score = v;
+                $timeout(moveit,1000);
             }
         }
     }
@@ -24,7 +28,7 @@ giftsAppsModule.directive('question',function(){
         restrict: 'E',
         replace: true,
         template :'<div class="row-fluid"><div class="span6">' +
-            '<p>How do I feel about {{activeQuestion.question}} {{ activeQuestion.score }}</p>' +
+            '<p>How do I feel about {{activeQuestion.question}}</p>' +
             '<p class="question">You\'re on question {{ currentQuestion }} of {{questionlist.length}}</p>' +
             '</div>' +
             '<div class="span6"><question-choice ng-model="activeQuestion"></question-choice></div>'
