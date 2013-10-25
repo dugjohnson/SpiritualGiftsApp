@@ -1,12 +1,14 @@
 'use strict';
+/*global giftsAppsModule*/
+/* not used currently
 function tallyCategories(questions){
-    var categories = new array();
+    var categories = [];
     angular.forEach(questions, function(question) {
         categories[question.category] = categories[question.category]+question.score;
     });
     return categories;
 }
-
+*/
 giftsAppsModule.controller('GiftsController', function ($scope, $location, $routeParams, Questions) {
     $scope.currentQuestion = 1;
     $scope.questionlist =  Questions.questions;
@@ -32,8 +34,8 @@ giftsAppsModule.controller('GiftsController', function ($scope, $location, $rout
         angular.forEach($scope.questionlist, function(question) {
             lookup[question.category].score = lookup[question.category].score + question.score;
         });
-    }
-    $scope.$watch('currentQuestion',function(newVal, oldVal){
+    };
+    $scope.$watch('currentQuestion',function(newVal){
         var questionindex = newVal -1;
         if(questionindex<0){$location.path('/');return;}
         if(questionindex>=$scope.questionlist.length){$location.path('/results');return;}

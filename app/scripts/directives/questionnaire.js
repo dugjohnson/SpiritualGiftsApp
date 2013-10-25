@@ -1,3 +1,6 @@
+'use strict';
+/*global giftsAppsModule*/
+
 giftsAppsModule.directive('questionChoice',function($timeout){
     return {
         restrict: 'E',
@@ -11,16 +14,16 @@ giftsAppsModule.directive('questionChoice',function($timeout){
             '<button class="btn btn-block" ng-class="{\'btn-success\':ngModel.score == 2}" ng-click="updateQuestion(ngModel,2)">OK with it</button>' +
             '<button class="btn btn-block" ng-class="{\'btn-success\':ngModel.score == 1}" ng-click="updateQuestion(ngModel,1)">Not so much</button>'+
             '<button class="btn btn-block" ng-class="{\'btn-success\':ngModel.score == 0}" ng-click="updateQuestion(ngModel,0)">No way!</button></div>',
-        link: function (scope, element, attrs) {
+        link: function (scope, element) {
             scope.updateQuestion = function (question, v) {
                 var moveit = function(){
                     var upscope = element.parent().parent().scope();
-                    upscope.nextQuestion();}
+                    upscope.nextQuestion();};
                 question.score = v;
                 $timeout(moveit,1000);
-            }
+            };
         }
-    }
+    };
 });
 
 giftsAppsModule.directive('question',function(){
@@ -32,7 +35,7 @@ giftsAppsModule.directive('question',function(){
             '<p class="question">You\'re on question {{ currentQuestion }} of {{questionlist.length}}</p>' +
             '</div>' +
             '<div class="span6"><question-choice ng-model="activeQuestion"></question-choice></div>'
-    }
+    };
 });
 giftsAppsModule.directive('previousNext', function () {
     return {
@@ -42,5 +45,5 @@ giftsAppsModule.directive('previousNext', function () {
             '<button class="btn" ng-click="nextQuestion()" ng-disabled="cannotProceed()">Next</button>' +
             '<button class="btn" ng-click="lastQuestion()" ng-disabled="cannotProceed()">Last</button></div>'
 
-    }
+    };
 });
