@@ -42,8 +42,7 @@ giftsAppsModule.directive('previousNext', function () {
         restrict: 'E',
         replace: true,
         template: '<div class="btn-group"><button class="btn" ng-click="previousQuestion()">Previous</button>' +
-            '<button class="btn" ng-click="nextQuestion()" ng-disabled="cannotProceed()">Next</button>' +
-            '<button class="btn" ng-click="lastQuestion()" ng-disabled="cannotProceed()">Last</button></div>'
-
+            '<button class="btn" ng-click="nextQuestion()" ng-disabled="cannotProceed()">Next</button>'// +
+            //'<button class="btn" ng-click="lastQuestion()" ng-disabled="cannotProceed()">Last</button></div>'
     };
 });

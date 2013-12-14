@@ -1,5 +1,5 @@
 'use strict';
-var giftsAppsModule = angular.module('giftsSurveyApp', ['ui.bootstrap']);
+var giftsAppsModule = angular.module('giftsSurveyApp', ['ui.bootstrap','ngRoute']);
 
 
 giftsAppsModule.config(function ($routeProvider, $locationProvider) {
