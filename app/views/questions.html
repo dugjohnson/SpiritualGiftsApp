@@ -1,9 +1,17 @@
-<p><strong>Honestly evaluate the statement based on your interest.</strong><p>
-<div >
-    <div>
-<question></question>
+<div class="head-panel question-page content-panel"><strong>Spiritual Gifts</strong> Inventory</div>
+<!--<p><strong>Honestly evaluate the statement based on your interest.</strong><p>-->
+<div class="container-fluid">
+<div class="row-fluid">
+    <div class="span7">
+        <p class="question-head">Question</p>
+        <question></question>
+        <previous-next></previous-next>
+    </div>
+    <div class="span5">
+        <p class="question-head">Your response</p>
+        <question-choice ng-model="activeQuestion"></question-choice>
+    </div>
 </div>
-    <previous-next></previous-next>
 </div>
-        <h2>This is a test version.</h2>
-        <p>Scores don't get sent anywhere yet</p>
+<p>Click your choice to proceed</p>
+<progress percent="progressPct"></progress>
