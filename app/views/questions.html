@@ -2,16 +2,18 @@
 <!--<p><strong>Honestly evaluate the statement based on your interest.</strong><p>-->
 <div class="container-fluid">
 <div class="row-fluid">
-    <div class="span7">
+    <div class="content-panel question-panel">
         <p class="question-head">Question</p>
         <question></question>
-        <previous-next></previous-next>
     </div>
-    <div class="span5">
+    <div class="content-panel ready-panel">
         <p class="question-head">Your response</p>
         <question-choice ng-model="activeQuestion"></question-choice>
+    </div>
+    <div class="content-panel response-panel">
+        <previous-next></previous-next>
     </div>
 </div>
 </div>
 <p>Click your choice to proceed</p>
-<progress percent="progressPct"></progress>
+<progressbar max="questionlist.length" value="currentQuestion">{{currentQuestion}}/{{questionlist.length}}</span></progressbar>

@@ -9,15 +9,16 @@ giftsAppsModule.directive('questionChoice',function($timeout){
             ngModel: '='
         },
         template :'<ul class="question-buttons">' +
-            '<li class="question-button" ng-class="{\'question-yes\':ngModel.score == 5}" ng-click="updateQuestion(ngModel,5)">Love it!</li>' +
-            '<li class="question-button" ng-class="{\'question-yes\':ngModel.score == 3}" ng-click="updateQuestion(ngModel,3)">Enjoy it.</li>'+
-            '<li class="question-button" ng-class="{\'question-yes\':ngModel.score == 2}" ng-click="updateQuestion(ngModel,2)">OK with it.</li>' +
-            '<li class="question-button" ng-class="{\'question-yes\':ngModel.score == 1}" ng-click="updateQuestion(ngModel,1)">Not so much.</li>'+
-            '<li class="question-button" ng-class="{\'question-yes\':ngModel.score == 0}" ng-click="updateQuestion(ngModel,0)">No way!</li></ul>',
+            '<li class="question-button" ng-class="{\'question-yes\':ngModel.score == 5}" ng-click="updateQuestion(ngModel,5)">Love it!<span class="glyphicon glyphicon-check floatlargeR"></span></li>' +
+            '<li class="question-button" ng-class="{\'question-yes\':ngModel.score == 3}" ng-click="updateQuestion(ngModel,3)">Enjoy it.<span class="glyphicon glyphicon-check floatlargeR"></span></li>'+
+            '<li class="question-button" ng-class="{\'question-yes\':ngModel.score == 2}" ng-click="updateQuestion(ngModel,2)">OK with it.<span class="glyphicon glyphicon-check floatlargeR"></span></li>' +
+            '<li class="question-button" ng-class="{\'question-yes\':ngModel.score == 1}" ng-click="updateQuestion(ngModel,1)">Not so much.<span class="glyphicon glyphicon-check floatlargeR"></span></li>'+
+            '<li class="question-button" ng-class="{\'question-yes\':ngModel.score == 0}" ng-click="updateQuestion(ngModel,0)">No way!<span class="glyphicon glyphicon-check floatlargeR"></span></li></ul>',
         link: function (scope, element) {
             scope.updateQuestion = function (question, v) {
                 var moveit = function(){
                     var upscope = element.parent().parent().scope();
+                    element.blur();
                     upscope.nextQuestion();};
                 question.score = v;
                 $timeout(moveit,1000);
@@ -29,9 +30,8 @@ giftsAppsModule.directive('question',function(){
     return {
         restrict: 'E',
         replace: true,
-        template :'<div class="question-panel">' +
-            '<p>How do I feel about {{activeQuestion.question}}</p>' +
-            '<p class="question">You\'re on question {{ currentQuestion }} of {{questionlist.length}}</p>' +
+        template :'<div>' +
+            '<span class="glyphicon glyphicon-question-sign floatlarge"></span><p>How do I feel about {{activeQuestion.question}}</p>' +
             '</div>'
     };
 });
@@ -39,7 +39,7 @@ giftsAppsModule.directive('previousNext', function () {
     return {
         restrict: 'E',
         replace: true,
-        template: "<div class=\"navigate-panel\"><button class=\"previous-btn\" ng-click=\"previousQuestion()\">Previous</button><button class=\"next-btn\" ng-click=\"nextQuestion()\" ng-disabled=\"cannotProceed()\">Next</button>"// +
+        template: "<div class=\"navigate-panel\"><div class=\"previous-btn\" ng-click=\"previousQuestion()\"><span class=\"glyphicon glyphicon-circle-arrow-left \"></span>Previous</div><div class=\"next-btn\" ng-click=\"nextQuestion()\" ng-disabled=\"cannotProceed()\"><span class=\"glyphicon glyphicon-circle-arrow-right \"></span>Next</div>"// +
     };
 });
 giftsAppsModule.directive('questionProgress', function () {

@@ -1,7 +1,15 @@
 <div ng-init="calculateResults()" >
-    <p>This is the results page</p>
+    <div class="head-panel content-panel"><strong>Spiritual Gifts</strong> Inventory <strong>Results</strong></div>
+    <div class="explain-panel content-panel">
+        <div>
+            <p>Your results will be emailed to the address you used when you started</p>
+        </div>
+    </div>
+    </div>
+    <div class="results-panel content-panel">
     <div ng-repeat="category in categories | orderBy:score:reverse">
-    <p>{{category.description}} {{category.score}}</p>
+        <progressbar class="resultsbar" max="60" value="30+category.score">{{category.description}} - {{category.score}}</span></progressbar>
+    </div>
     </div>
 <!--    <button class="btn" ng-click="lastQuestion()" ng-disabled="cannotProceed()">Last</button> -->
 </div>

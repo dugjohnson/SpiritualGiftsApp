@@ -30,11 +30,14 @@ giftsAppsModule.controller('GiftsController', function ($scope, $location, $rout
     $scope.calculateResults = function(){
         var lookup = {};
         for (var i = 0, len = $scope.categories.length; i < len; i++) {
+            $scope.categories[i].score = 0; //0 out category score
             lookup[$scope.categories[i].category] = $scope.categories[i];
         }
         angular.forEach($scope.questionlist, function(question) {
             lookup[question.category].score = lookup[question.category].score + question.score;
         });
+        //Descending order
+        $scope.categories.sort(function(b,a){return parseInt(a.score,10) - parseInt(b.score,10);});
     };
     $scope.$watch('currentQuestion',function(newVal){
         var questionindex = newVal -1;
