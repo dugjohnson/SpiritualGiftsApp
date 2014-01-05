@@ -1,7 +1,29 @@
 body {
     background: #513949;
     font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-size: 12px;
     color: #E7D2C1;
+}
+
+@media only screen and (max-device-width: 480px){
+    body {
+        font-size: 14px;
+    }
+    .question-head{
+        visibility: hidden;
+        height: 0px;
+    }
+}
+
+.content-main{
+    background: #2B0521;
+    width: 480px;
+}
+
+@media only screen and (max-device-width: 480px){
+    .content-main{
+        width: 100%;
+    }
 }
 .floatlarge{
     float: left;
@@ -16,6 +38,7 @@ body {
 .progress {
     background-color: #E7D2C1;
     background-image: linear-gradient(to bottom, #E7D2C1, #E7D2C1);
+    height: 1.5em;
 }
 .progress-bar {
     background-image: linear-gradient(to bottom, #4D626B, #4D626B);
@@ -31,13 +54,8 @@ body {
     background-image: linear-gradient(to bottom, #A54E57, #A54E57);
     color: #E7D2C1;
     border-radius: 4px;
-    font-size: 2em;
 }
 
-.content-main{
-    background: #2B0521;
-    width: 500px;
-}
 .content-panel{
     border-width: 0px 10px 5px 10px;
     border-color: #2B0521;
@@ -54,9 +72,12 @@ body {
     text-transform: uppercase;
     text-align: center;
 }
+.entry-panel {
+    background: #A54E57;
+}
 .question-panel {
     background: #A54E57;
-    height:150px;
+    height:8em;
 }
 .response-panel {
     background: #A54E57;
@@ -137,16 +158,13 @@ body {
     margin: 5px;
     text-transform: uppercase;
     font-weight: 700;
-    height: 60px;
+    height: 4em;
     width: 100%;
 }
 .question-button span {
     visibility: hidden;
 }
-/*.question-button:hover{
-    background: #A5C4B9;
-    color: #4D626B;
-} */
+
 .question-yes{
     background: #E7D2C1;
     color: #4D626B;
@@ -156,14 +174,21 @@ body {
 }
 
 .navigate-panel {
-    height: 30px;
+    height: 3em;
+}
+.nav-btn {
+    height: 3em;
+    width: 6em;
+    color: inherit;
+    background: inherit;
+    border: none;
+}
+.nav-btn:disabled {
+    color: #000000;
 }
 .next-btn{
-    width: 40px;
     float: right;
 }
 .previous-btn{
-    height: 30px;
-    width: 40px;
     float: left;
 }

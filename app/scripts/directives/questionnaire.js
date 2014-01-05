@@ -39,14 +39,7 @@ giftsAppsModule.directive('previousNext', function () {
     return {
         restrict: 'E',
         replace: true,
-        template: "<div class=\"navigate-panel\"><div class=\"previous-btn\" ng-click=\"previousQuestion()\"><span class=\"glyphicon glyphicon-circle-arrow-left \"></span>Previous</div><div class=\"next-btn\" ng-click=\"nextQuestion()\" ng-disabled=\"cannotProceed()\"><span class=\"glyphicon glyphicon-circle-arrow-right \"></span>Next</div>"// +
-    };
-});
-giftsAppsModule.directive('questionProgress', function () {
-    return {
-        restrict: 'E',
-        replace: true,
-        template: "<div class=\"progress\"><div class=\"bar\" style=\"width: 40%;\"></div></div>"
+        template: "<div class=\"navigate-panel\"><button class=\"previous-btn nav-btn\" ng-click=\"previousQuestion()\"><span class=\"glyphicon glyphicon-circle-arrow-left \"></span><br/>Previous</button><button class=\"next-btn nav-btn\" ng-click=\"nextQuestion()\" ng-disabled=\"cannotProceed()\"><span class=\"glyphicon glyphicon-circle-arrow-right \"></span><br/>Next</button></div>"// +
     };
 });
 

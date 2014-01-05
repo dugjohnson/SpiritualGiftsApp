@@ -9,11 +9,11 @@
     <div class="content-panel ready-panel">
         <p class="question-head">Your response</p>
         <question-choice ng-model="activeQuestion"></question-choice>
+        <p>Touch your choice to proceed</p>
     </div>
     <div class="content-panel response-panel">
         <previous-next></previous-next>
     </div>
 </div>
 </div>
-<p>Click your choice to proceed</p>
 <progressbar max="questionlist.length" value="currentQuestion">{{currentQuestion}}/{{questionlist.length}}</span></progressbar>

@@ -12,6 +12,7 @@ function tallyCategories(questions){
 giftsAppsModule.controller('GiftsController', function ($scope, $location, $routeParams, Questions) {
     $scope.currentQuestion = 1;
     $scope.progressPct = 0;
+    $scope.surveyEmail = '';
     $scope.questionlist =  Questions.questions;
     //$scope.categories = tallyCategories($scope.questionlist);
     $scope.categories = Questions.categories;
