@@ -31,7 +31,7 @@ giftsAppsModule.directive('question',function(){
         restrict: 'E',
         replace: true,
         template :'<div>' +
-            '<span class="glyphicon glyphicon-question-sign floatlarge"></span><p>How do I feel about {{activeQuestion.question}}</p>' +
+            '<span class="glyphicon glyphicon-question-sign floatlarge"></span> <p>{{activeQuestion.question}}</p>' +
             '</div>'
     };
 });

@@ -8,7 +8,7 @@ giftsAppsModule.service('Questions',[ function(){
 
     return {'questions': [
         {'index': 1, 'question': 'rejoicing in God\'s provision even when the checkbook is in the red.', 'category': 'FTH', 'score': null},
-        {'index': 2, 'question': 'cleaning the kitchen once a week.', 'category': 'SVC', 'score': null},
+         {'index': 2, 'question': 'cleaning the kitchen once a week.', 'category': 'SVC', 'score': null},
         {'index': 3, 'question': 'building sets for a drama.', 'category': 'CFT', 'score': null},
         {'index': 4, 'question': 'searching the Bible to check the validity of a sermon or Bible lesson.', 'category': 'DSC', 'score': null},
         {'index': 5, 'question': 'studying a demographic survey.', 'category': 'APS', 'score': null},
@@ -128,7 +128,9 @@ giftsAppsModule.service('Questions',[ function(){
            {'category': 'XHT', 'description':'Exhortation',  'score': 0},
            {'category': 'SHP', 'description':'Shepherding',  'score': 0},
            {'category': 'ADM', 'description':'Administration',  'score': 0}
-]
+        ],
+        'surveyEmail':'',
+        'surveyName':''
     };
 }]);
 

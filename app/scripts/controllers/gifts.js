@@ -1,24 +1,24 @@
 'use strict';
 /*global giftsAppsModule*/
-/* not used currently
-function tallyCategories(questions){
-    var categories = [];
-    angular.forEach(questions, function(question) {
-        categories[question.category] = categories[question.category]+question.score;
-    });
-    return categories;
-}
-*/
-giftsAppsModule.controller('GiftsController', function ($scope, $location, $routeParams, Questions) {
+/*global Apigee*/
+/*global jQuery*/
+
+giftsAppsModule.controller('GiftsController', function ($scope, $location, $routeParams, $http, Questions) {
     $scope.currentQuestion = 1;
     $scope.progressPct = 0;
-    $scope.surveyEmail = '';
+    $scope.surveyquestions = Questions;
     $scope.questionlist =  Questions.questions;
-    //$scope.categories = tallyCategories($scope.questionlist);
     $scope.categories = Questions.categories;
     $scope.nextQuestion = function(){
         $scope.currentQuestion++;
     };
+    var clientCreds = {
+        orgName:'dugjohnson',
+        appName:'sandbox'
+    };
+//Initializes the SDK. Also instantiates Apigee.MonitoringClient
+    $scope.dataClient = new Apigee.Client(clientCreds);
+    $scope.survey = new Apigee.Collection({"client":$scope.dataClient,"type":"surveys"});
     $scope.previousQuestion = function(){
         $scope.currentQuestion--;
     };
@@ -39,6 +39,7 @@ giftsAppsModule.controller('GiftsController', function ($scope, $location, $rout
         });
         //Descending order
         $scope.categories.sort(function(b,a){return parseInt(a.score,10) - parseInt(b.score,10);});
+        $scope.submitQuery();
     };
     $scope.$watch('currentQuestion',function(newVal){
         var questionindex = newVal -1;
@@ -48,4 +49,19 @@ giftsAppsModule.controller('GiftsController', function ($scope, $location, $rout
         if(questionindex<0){$location.path('/');return;}
         if(questionindex>=$scope.questionlist.length){$location.path('/results');return;}
         $scope.activeQuestion=$scope.questionlist[questionindex]; });
+
+    $scope.submitQuery = function(){
+        var upload = {
+            "email" : $scope.surveyquestions.surveyEmail,
+            "name" : $scope.surveyquestions.surveyName,
+            "categories" : $scope.categories
+        };
+
+ jQuery.ajax({
+            type: "POST",
+            url: "http://gifts.asknice.com/app/ajax/surveyComplete.php",
+            data: {surveyData:upload},
+            dataType: 'json'
+        });
+    };
 });
